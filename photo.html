@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+<style>
+  .photo-detail {
+    height: 600px;
+    width: auto;
+  }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="container m-5">
+  <div class="row justify-content-center">
+    <div class="col">
+      <a href="{% url 'gallery' %}" class="btn btn-dark my-2">Back to Gallery</a>
+
+      <div>
+        <img class="photo-detail" src="{{ photo.image.url }}">
+        <p>{{ photo.description }}</p>
+      </div>
+      <a href="{% url 'update_photo' photo.id %}" class="btn btn-secondary my-3">Move photo to a different album</a>
+      <a href="{% url 'delete_photo' photo.id %}" class="btn btn-danger my-3">Delete Photo</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

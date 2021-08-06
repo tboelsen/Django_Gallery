@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+<style>
+  .photo-detail {
+    height: 600px;
+    width: auto;
+  }
+</style>
+{% endblock style %}
+
+{% block content %}
+
+<div class="container m-5">
+<h2>Move the photo to a new album</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button class="btn btn-primary mt-2" type="submit">Edit</button>
+</form>
+<br>
+<a href="{% url 'gallery' %}" class="btn btn-secondary my-3">Back to Gallery</a>
+<br>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div>
+        <img class="photo-detail" src="{{ photo.image.url }}">
+        <p>{{ photo.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
